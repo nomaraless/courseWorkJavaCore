@@ -9,11 +9,6 @@ import java.util.Random;
 @Configuration
 public class Config {
     @Bean
-    public Random random() {
-        return new Random();
-    }
-
-    @Bean
     public MathQuestionService mathQuestionService() {
         return new MathQuestionService();
     }

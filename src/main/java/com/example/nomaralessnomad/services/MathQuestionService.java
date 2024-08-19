@@ -5,14 +5,14 @@ import com.example.nomaralessnomad.interfaces.QuestionService;
 
 import java.util.Collection;
 import java.util.Random;
-
 public class MathQuestionService implements QuestionService {
 
-    Random random;
+    private Random random;
 
     private final String[] operators = {"+", "-", "*", "/"};
 
     public MathQuestionService() {
+        this.random = new Random();
     }
 
     @Override
