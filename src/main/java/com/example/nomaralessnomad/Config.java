@@ -1,16 +1,13 @@
 package com.example.nomaralessnomad;
 
-import com.example.nomaralessnomad.services.MathQuestionService;
+import com.example.nomaralessnomad.services.MathQuestionServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Random;
 
 @Configuration
 public class Config {
     @Bean
-    public MathQuestionService mathQuestionService() {
-        return new MathQuestionService();
+    public MathQuestionServiceImpl mathQuestionService() {
+        return new MathQuestionServiceImpl();
     }
-
 }

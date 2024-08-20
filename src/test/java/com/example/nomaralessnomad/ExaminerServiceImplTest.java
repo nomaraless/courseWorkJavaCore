@@ -1,7 +1,7 @@
 package com.example.nomaralessnomad;
 
 import com.example.nomaralessnomad.services.ExaminerServiceImpl;
-import com.example.nomaralessnomad.services.MathQuestionService;
+import com.example.nomaralessnomad.services.MathQuestionServiceImpl;
 import com.example.nomaralessnomad.services.Question;
 import com.example.nomaralessnomad.customeException.IllegalArgument;
 import org.junit.jupiter.api.*;
@@ -22,7 +22,7 @@ public class ExaminerServiceImplTest {
     private QuestionRepositoryImpl questionRepository;
 
     @Mock
-    private MathQuestionService mathQuestionService;
+    private MathQuestionServiceImpl mathQuestionService;
 
     @Mock
     private Random random;
@@ -48,7 +48,7 @@ public class ExaminerServiceImplTest {
         List<Question> questions = List.of(q1, q2, q3);
         when(questionRepository.getAll()).thenReturn(questions);
         when(random.nextInt(3)).thenReturn(1);
-        when(mathQuestionService.getRandomQuestion())
+        when(mathQuestionService.getRandomMathQuestion())
                 .thenReturn(new Question("V?", "V"))
                 .thenReturn(new Question("X?", "X"));
         int amount = 3;
@@ -56,7 +56,7 @@ public class ExaminerServiceImplTest {
 
         assertEquals(3, result.size());
         assertTrue(result.containsAll(questions.subList(0, 1)));
-        verify(mathQuestionService, times(2)).getRandomQuestion();
+        verify(mathQuestionService, times(2)).getRandomMathQuestion();
     }
 
     @Test
@@ -64,7 +64,7 @@ public class ExaminerServiceImplTest {
         List<Question> questions = List.of(q1,q2);
         when(questionRepository.getAll()).thenReturn(questions);
         when(random.nextInt(anyInt())).thenReturn(0, 1);
-        when(mathQuestionService.getRandomQuestion())
+        when(mathQuestionService.getRandomMathQuestion())
                 .thenReturn(new Question("1", "1"))
                 .thenReturn(new Question("2", "2"));
         int amount = 2;

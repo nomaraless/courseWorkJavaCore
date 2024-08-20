@@ -14,12 +14,12 @@ public class ExaminerServiceImpl implements ExaminerService {
 
     private QuestionRepositoryImpl questionRepository;
 
-    private MathQuestionService mathQuestionService;
+    private MathQuestionServiceImpl mathQuestionServiceImpl;
 
     @Autowired
-    public ExaminerServiceImpl(QuestionRepositoryImpl questionRepository, MathQuestionService mathQuestionService) {
+    public ExaminerServiceImpl(QuestionRepositoryImpl questionRepository, MathQuestionServiceImpl mathQuestionServiceImpl) {
         this.questionRepository = questionRepository;
-        this.mathQuestionService = mathQuestionService;
+        this.mathQuestionServiceImpl = mathQuestionServiceImpl;
     }
 
 
@@ -37,7 +37,7 @@ public class ExaminerServiceImpl implements ExaminerService {
 
         Set<Question> questions = new LinkedHashSet<>();
         for (int i = 0; i < b; i++) {
-            questions.add(mathQuestionService.getRandomQuestion());
+            questions.add(mathQuestionServiceImpl.getRandomMathQuestion());
         }
         for (int i = 0; i < a; i++) {
             if (questions.size() <= amount) {
