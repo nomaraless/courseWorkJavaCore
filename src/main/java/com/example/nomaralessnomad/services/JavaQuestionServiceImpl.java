@@ -1,6 +1,7 @@
 package com.example.nomaralessnomad.services;
 
 import com.example.nomaralessnomad.interfaces.QuestionService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import com.example.nomaralessnomad.repositorys.QuestionRepository;
 import java.util.Collection;
@@ -8,6 +9,7 @@ import java.util.Random;
 import java.util.Set;
 
 @Service
+@Qualifier("javaQuestionServiceImpl")
 public class JavaQuestionServiceImpl implements QuestionService {
 
     QuestionRepository repository;
